@@ -11,6 +11,7 @@ import { VisualEditing } from "next-sanity/visual-editing"
 import { draftMode } from "next/headers"
 import Header from "@/components/header"
 import Footer from "@/components/footer"
+import SmoothScrollProvider from "@/components/smooth-scroll-provider"
 import { Providers } from "@/components/providers"
 import { GTMInit } from "@/components/gtm-init"
 import OrganizationJsonLd from "@/components/organization-jsonld"
@@ -38,13 +39,15 @@ export default async function SiteLayout({
         <GTMInit />
         {site && <OrganizationJsonLd site={site} />}
         {isEnabled && <PreviewBar />}
-        <Header navigation={headerNav} />
-        <Template>
-          {children}
-          <SanityLive />
-          {isEnabled && <VisualEditing zIndex={999999} />}
-        </Template>
-        <Footer navigation={footerNav} />
+        <SmoothScrollProvider>
+          <Header navigation={headerNav} />
+          <Template>
+            {children}
+            <SanityLive />
+            {isEnabled && <VisualEditing zIndex={999999} />}
+          </Template>
+          <Footer navigation={footerNav} />
+        </SmoothScrollProvider>
       </Providers>
     </div>
   )

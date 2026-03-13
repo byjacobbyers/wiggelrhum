@@ -3,6 +3,11 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Lenis handles smooth scroll - disable native */
+html {
+  scroll-behavior: auto;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #111827;
