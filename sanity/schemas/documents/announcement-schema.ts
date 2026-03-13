@@ -5,6 +5,7 @@ export default defineType({
   title: 'Announcement',
   type: 'document',
   fields: [
+    defineField({ type: 'string', name: 'title', hidden: true }),
     defineField({
       name: 'active',
       title: 'Active',
@@ -19,6 +20,24 @@ export default defineType({
       description: 'Announcement text (e.g. banner message)',
     }),
     defineField({
+      name: 'startDate',
+      title: 'Start Date',
+      type: 'date',
+      validation: (Rule) => Rule.required(),
+      initialValue: () => new Date().toISOString().split('T')[0],
+    }),
+    defineField({
+      name: 'endDate',
+      title: 'End Date',
+      type: 'date',
+      validation: (Rule) => Rule.required(),
+      initialValue: () => {
+        const date = new Date()
+        date.setDate(date.getDate() + 7)
+        return date.toISOString().split('T')[0]
+      },
+    }),
+    defineField({
       name: 'route',
       title: 'Link',
       type: 'route',
@@ -26,11 +45,13 @@ export default defineType({
     }),
   ],
   preview: {
-    select: { message: 'message', active: 'active' },
-    prepare({ message, active }) {
+    select: { message: 'message', active: 'active', startDate: 'startDate', endDate: 'endDate' },
+    prepare({ message, active, startDate, endDate }) {
+      const start = startDate ? new Date(startDate).toLocaleDateString() : 'No start date'
+      const end = endDate ? new Date(endDate).toLocaleDateString() : 'No end date'
       return {
         title: message || 'Announcement',
-        subtitle: active ? 'Active' : 'Inactive',
+        subtitle: `${start} - ${end}${active ? ' (Active)' : ''}`,
       }
     },
   },
