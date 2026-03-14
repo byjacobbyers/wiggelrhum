@@ -60,7 +60,7 @@ export default function HeroBlock({
           ) : null}
         </motion.div>
         <motion.div
-          className="w-full md:w-1/2 aspect-square relative"
+          className="w-full md:w-1/2 relative"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -69,8 +69,10 @@ export default function HeroBlock({
           {image ? (
             <SanityImage
               image={image}
+              fill={false}
               alt={image.alt || 'Hero'}
-              className="object-cover"
+              className="w-full h-auto object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           ) : null}
         </motion.div>

@@ -26,15 +26,17 @@ export default function ImageBlock({
       <div className="container flex flex-col items-center gap-6">
         {image ? (
           <motion.div
-            className="relative w-full aspect-video"
+            className="relative w-full"
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
           >
             <SanityImage
               image={image}
-              alt={image.alt || 'Image'}
-              className="object-cover rounded-lg"
+              fill={false}
+              alt={image.alt || 'Hero'}
+              className="w-full h-auto object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </motion.div>
         ) : null}

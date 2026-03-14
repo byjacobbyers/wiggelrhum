@@ -213,7 +213,7 @@ html {
     @apply text-lg 2xl:text-2xl list-decimal pl-6 pb-2;
   }
   ul {
-    @apply text-lg 2xl:text-2xl list-disc pl-6 pb-2;
+    @apply text-lg 2xl:text-2xl list-disc pl-8 pb-2;
   }
 }
 
