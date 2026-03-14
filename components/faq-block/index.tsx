@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { PortableText } from '@portabletext/react'
-import { portableTextComponents } from '@/lib/portable-text-components'
+import SimpleText from '@/components/simple-text'
 
 type Faq = {
   question?: string
@@ -39,12 +38,9 @@ export default function FaqBlock({
           {faqs.map((faq, i) => (
             <div key={i} className="border-b border-border pb-6">
               <h3 className="text-xl font-semibold mb-2">{faq.question}</h3>
-              {faq.answer && Array.isArray(faq.answer) ? (
+              {faq.answer ? (
                 <div className="prose prose-sm max-w-none">
-                  <PortableText
-                  value={faq.answer as Parameters<typeof PortableText>[0]['value']}
-                  components={portableTextComponents}
-                />
+                  <SimpleText content={faq.answer} />
                 </div>
               ) : null}
             </div>

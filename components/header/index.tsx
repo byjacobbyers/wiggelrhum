@@ -44,16 +44,19 @@ export default function Header({ navigation }: HeaderProps) {
     <>
       <header
         ref={headerRef}
-        className="sticky top-0 z-50 w-full border-b-4 border-black bg-background px-5"
+        className="sticky top-0 z-50 w-full border-b-4 border-primary bg-background px-5"
       >
         <div className="flex h-16 items-center justify-between">
-          <Link href="/">
+          <Link href="/" className='flex items-end gap-2'>
             <h1
-              className="text-2xl font-bold tracking-[-0.25rem] leading-none p-0 lg:text-3xl"
+              className="text-2xl font-bold leading-none p-0 lg:text-3xl"
               title="Wiggelrhum"
             >
               Wiggelrhum
             </h1>
+            <span className='text-sm uppercase'>
+              At the baker house
+            </span>
           </Link>
           <nav className="hidden lg:flex items-center gap-6">
             {navigation?.items?.map((item, i) => (

@@ -24,7 +24,7 @@ export const sectionsQuery = groq`
     _type == 'ctaBlock' => {
       ...,
       cta { ..., route { ${routeQuery} } },
-      image { ${imageQuery} }
+      ${portableTextWithLinks}
     },
     _type == 'textBlock' => {
       ...,

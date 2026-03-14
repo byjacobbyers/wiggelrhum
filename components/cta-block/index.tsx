@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Route from '@/components/route'
+import SimpleText from '@/components/simple-text'
 
 type CtaBlockProps = {
   active?: boolean
@@ -18,6 +19,7 @@ export default function CtaBlock({
   componentIndex = 0,
   anchor,
   alignment = 'text-center',
+  content,
   cta,
 }: CtaBlockProps) {
   if (!active) return null
@@ -34,12 +36,17 @@ export default function CtaBlock({
     >
       <div className={`container flex flex-col ${alignClass} justify-center`}>
         <motion.div
-          className={`w-full max-w-4xl ${alignment} flex ${justifyClass} mt-5`}
+          className={`w-full max-w-4xl ${alignment} flex flex-col ${justifyClass} gap-6 mt-5`}
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: componentIndex !== 0 ? 0.5 : 0 }}
         >
+          {content ? (
+            <div className="prose prose-lg max-w-none">
+              <SimpleText content={content} />
+            </div>
+          ) : null}
           {cta?.active && cta?.route ? (
             <Button asChild variant="default">
               <Route data={cta.route as Parameters<typeof Route>[0]['data']}>

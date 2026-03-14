@@ -29,8 +29,9 @@ export default defineType({
     }),
     defineField({
       name: 'content',
-      type: 'array',
-      of: [{ type: 'block' }],
+      title: 'Content',
+      type: 'simpleText',
+      description: 'Text displayed above the button',
     }),
     defineField({ title: 'CTA', name: 'cta', type: 'cta' }),
   ],

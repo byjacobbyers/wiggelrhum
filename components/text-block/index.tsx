@@ -1,8 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { PortableText } from '@portabletext/react'
-import { portableTextComponents } from '@/lib/portable-text-components'
+import NormalText from '@/components/normal-text'
 
 type TextBlockProps = {
   active?: boolean
@@ -35,12 +34,7 @@ export default function TextBlock({
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
       >
-        {content && Array.isArray(content) ? (
-          <PortableText
-            value={content as Parameters<typeof PortableText>[0]['value']}
-            components={portableTextComponents}
-          />
-        ) : null}
+        <NormalText content={content} />
       </motion.div>
     </section>
   )

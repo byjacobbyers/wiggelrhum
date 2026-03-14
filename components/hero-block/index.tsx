@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import Route from '@/components/route'
 import SanityImage from '@/components/sanity-image'
+import SimpleText from '@/components/simple-text'
 
 type HeroBlockProps = {
   active?: boolean
@@ -21,6 +22,7 @@ export default function HeroBlock({
   layout = 'image-right',
   anchor,
   image,
+  content,
   cta,
 }: HeroBlockProps) {
   if (!active) return null
@@ -36,12 +38,17 @@ export default function HeroBlock({
         className={`container flex flex-wrap md:flex-nowrap ${layoutClass} flex-col-reverse items-center w-full gap-8`}
       >
         <motion.div
-          className="w-full md:w-1/2"
+          className="w-full md:w-1/2 flex flex-col gap-6"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ delay: componentIndex !== 0 ? 0.5 : 0 }}
         >
+          {content ? (
+            <div className="prose prose-lg max-w-none">
+              <SimpleText content={content} />
+            </div>
+          ) : null}
           {cta?.active && cta?.route ? (
             <Button asChild variant="default" className="mt-5">
               <Route data={cta.route as Parameters<typeof Route>[0]['data']}>
