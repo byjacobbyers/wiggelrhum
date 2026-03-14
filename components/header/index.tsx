@@ -58,12 +58,12 @@ export default function Header({ navigation }: HeaderProps) {
               At the baker house
             </span>
           </Link>
-          <nav className="hidden lg:flex items-center gap-6">
+          <nav className="hidden lg:flex items-center gap-6 text-lg 2xl:text-2xl">
             {navigation?.items?.map((item, i) => (
               <Route
                 key={i}
                 data={item}
-                className="text-sm font-medium hover:opacity-80"
+                className="font-bold uppercase hover:underline"
               >
                 {item.title || 'Link'}
               </Route>
