@@ -1,5 +1,6 @@
 import { defineType, defineField } from 'sanity'
 import { InlineElementIcon } from '@sanity/icons'
+import ImagesPerRowInput from '../inputs/images-per-row-input'
 
 const columnBlock = defineType({
   title: 'Column Block',
@@ -34,18 +35,31 @@ const columnBlock = defineType({
       description: 'Add individual columns with their own content',
       validation: (Rule) => Rule.min(1).max(4),
     }),
+    defineField({
+      title: 'Columns Per Row',
+      name: 'columnsPerRow',
+      type: 'number',
+      description: 'Number of columns to display per row (2-4)',
+      components: {
+        input: ImagesPerRowInput,
+      },
+      validation: (Rule) => Rule.min(2).max(4),
+      initialValue: 3,
+    }),
   ],
   preview: {
     select: {
       title: 'title',
       active: 'active',
       columns: 'columns',
+      columnsPerRow: 'columnsPerRow',
     },
-    prepare({ title, active, columns }) {
+    prepare({ title, active, columns, columnsPerRow }) {
       const columnCount = columns?.length || 0
+      const perRow = columnsPerRow ?? 3
       return {
         title: 'Column Block',
-        subtitle: `${active ? 'Active' : 'Not Active'} - ${columnCount} column${columnCount !== 1 ? 's' : ''} - ${title || 'No Title'}`,
+        subtitle: `${active ? 'Active' : 'Not Active'} - ${columnCount} column${columnCount !== 1 ? 's' : ''} - ${perRow} per row - ${title || 'No Title'}`,
       }
     },
   },
