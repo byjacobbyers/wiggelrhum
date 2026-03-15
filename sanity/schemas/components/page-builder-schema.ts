@@ -13,6 +13,7 @@ export default defineField({
     { type: 'faqBlock' },
     { type: 'imageBlock' },
     { type: 'embedBlock' },
+    { type: 'formBlock' },
     { type: 'spacerBlock' },
     { type: 'dividerBlock' },
   ],

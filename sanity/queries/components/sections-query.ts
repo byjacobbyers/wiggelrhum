@@ -61,6 +61,10 @@ export const sectionsQuery = groq`
       ${portableTextWithLinks}
     },
     _type == 'embedBlock' => { ... },
+    _type == 'formBlock' => {
+      ...,
+      ${portableTextWithLinks}
+    },
     _type == 'imageBlock' => {
       ...,
       image { ${imageQuery} }

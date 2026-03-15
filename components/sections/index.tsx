@@ -8,6 +8,7 @@ import TextBlock from '@/components/text-block'
 import ImageBlock from '@/components/image-block'
 import FaqBlock from '@/components/faq-block'
 import EmbedBlock from '@/components/embed-block'
+import FormBlock from '@/components/form-block'
 import SpacerBlock from '@/components/spacer-block'
 import DividerBlock from '@/components/divider-block'
 
@@ -20,6 +21,7 @@ const blockMap: Record<string, React.FC<Record<string, unknown>>> = {
   imageBlock: ImageBlock as React.FC<Record<string, unknown>>,
   faqBlock: FaqBlock as React.FC<Record<string, unknown>>,
   embedBlock: EmbedBlock as React.FC<Record<string, unknown>>,
+  formBlock: FormBlock as React.FC<Record<string, unknown>>,
   spacerBlock: SpacerBlock as React.FC<Record<string, unknown>>,
   dividerBlock: DividerBlock as React.FC<Record<string, unknown>>,
 }
